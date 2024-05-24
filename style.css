@@ -1,0 +1,135 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.nav_control{
+    height: 10vh;
+    width: 100vw;       
+    display: flex;
+    position: fixed;
+    border-bottom: 1px solid rgb(203, 202, 202);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    z-index: 1;
+    background-color: white;
+}
+span{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-weight: 600;
+}
+.login{
+    border: none;
+    height:40px;
+    border-radius: 20px;
+    width: 100px;
+    background-color: rgb(222, 239, 252);
+    color: rgb(5, 54, 152);
+    text-shadow: 0px 0px 4px cyan;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: large; 
+}
+.search_bar{
+    position: fixed;
+    top: 15vh;
+    border: 1px solid rgb(203, 202, 202);
+    background-color: white;
+    height: 10vh;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding-left: 40px;
+
+}
+input{
+    height: 40px;
+}
+input[type="search"]{
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    margin: 0px;
+    background-color:  rgb(218, 215, 215);
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+button{
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color:  rgb(218, 215, 215);
+}
+.hello{
+    cursor: pointer;
+    width: 150px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-family: fantasy;
+    border-radius: 20px;
+}
+input[type="search"]:focus{
+    outline: none;
+}
+.record_handler{
+    height: 90vh;
+    width: 90vw;
+    display: flex;
+    justify-content: flex-start;
+}
+.search_handle{
+    display: inline-block;
+}
+.search_handle{
+    height: 45px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color:  rgb(218, 215, 215);
+
+}
+
+.students_record div ul li{
+    margin: 10px 10px;
+}
+ul{
+    height: 210px;
+    width: 440px;
+    font-size: 25px;
+    text-align: left;
+    list-style-type: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(233, 232, 230); 
+    padding-left: 0px;
+    padding-top: 10px;
+    border-radius: 20px;
+    box-shadow: 2px -2px 5px grey;
+}
+
+.students_record{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: space-around;
+    flex-direction: row;
+    margin-top: 30vh;
+    height:70vh;
+    gap: 20px;
+}
