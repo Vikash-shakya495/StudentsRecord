@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .nav_control{
+            height: 10vh;
+            width: 100vw;       
+            display: flex;
+            position: fixed;
+            border-bottom: 1px solid rgb(203, 202, 202);
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100vw;
+            z-index: 1;
+            background-color: white;
+        }
+        span{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: large;
+            font-weight: 600;
+        }
+        .login{
+            border: none;
+            height:40px;
+            border-radius: 20px;
+            width: 100px;
+            background-color: rgb(222, 239, 252);
+            color: rgb(5, 54, 152);
+            text-shadow: 0px 0px 4px cyan;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: large; 
+        }
+        .search_bar{
+            position: fixed;
+            top: 15vh;
+            border: 1px solid rgb(203, 202, 202);
+            background-color: white;
+            height: 10vh;
+            width: 90%;
+            border-radius: 20px;
+            display: flex;
+            justify-content:flex-start;
+            align-items: center;
+            padding-left: 40px;
+
+        }
+        input{
+            height: 40px;
+        }
+        input[type="search"]{
+            width: 250px;
+            border-radius: 10px;
+            border: none;
+            margin: 0px;
+            background-color:  rgb(218, 215, 215);
+            font-size: 20px;
+            padding-left: 20px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+
+        }
+        button{
+            height: 40px;
+            width: 40px;
+            border-radius: 10px;
+            border: none;
+            background-color:  rgb(218, 215, 215);
+        }
+        .hello{
+            cursor: pointer;
+            width: 150px;
+            border: none;
+            background-color: blueviolet;
+            color: white;
+            font-family: fantasy;
+            border-radius: 20px;
+        }
+        input[type="search"]:focus{
+            outline: none;
+        }
+        .record_handler{
+            height: 90vh;
+            width: 90vw;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .search_handle{
+            display: inline-block;
+        }
+        .search_handle{
+            height: 45px;
+            width: auto;
+            margin-right: 10px;
+            border-radius: 10px;
+            background-color:  rgb(218, 215, 215);
+
+        }
+
+        .students_record div ul li{
+            margin: 10px 10px;
+        }
+        ul{
+            height: 210px;
+            width: 440px;
+            font-size: 25px;
+            text-align: left;
+            list-style-type: none;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(233, 232, 230); 
+            padding-left: 0px;
+            padding-top: 10px;
+            border-radius: 20px;
+            box-shadow: 2px -2px 5px grey;
+        }
+        
+        .students_record{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: space-around;
+            flex-direction: row;
+            margin-top: 30vh;
+            height:70vh;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav_control">
+            <nav>
+                <span>Hi, Username</span>
+                <button class="login">Login</button> 
+            </nav>
+        </div>
+        <div class="Data_fetch">
+            <div class="record_handler">
+                <div class="students_record">
+                </div>
+            </div>
+            <div class="search_bar">
+                <div class="search_handle">
+                    <input type="search" value='' id="search-query">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+                <button class="hello" >Search</button>
+            </div>
+        </div>
+        <div id="search-results">
+        </div>
+    </div>
+    <script>
+        let students = [
+    {Name: "Salmaan Ahmed",Marks: "38%",Class: "3rd",Address: "India"},
+    {Name: "Riya Sharma",Marks: "85%",Class: "10th",Address: "123, ABC Colony, Delhi"},
+    {Name: "Rohan Patel",Marks: "70%",Class: "12th",Address: "456, XYZ Street, Mumabi"},
+    {Name: "Priya Singh",Marks: "95%",Class: "8th",Address: "789, PQR Nagar, Banglore"},
+    {Name: "Ankit Gupta",Marks: "60%",Class: "9th",Address: "101, LMN Road, Kolkata"},
+    {Name: "Neha Verma",Marks: "80%",Class: "11th",Address: "222, DEF Avenue, Chennai"},
+    {Name: "Manoj Kumar",Marks: "75%",Class: "10th",Address: "333, GHI Lane, Hyderabad"},
+    {Name: "Pooja Mishra",Marks: "88%",Class: "12th",Address: "444, STU Colony, Pune"},
+    {Name: "Rajesh Singhania",Marks: "92%",Class: "9th",Address: "555, VWX Street, Jaipur"},
+    {Name: "Sunita jain",Marks: "78",Class: "11th",Address: "666, RST Road, Ahmedabad"},
+    {Name: "Jennifer Smith",Marks: "87%",Class: "10th Grade",Address: "123 Maple Street, Anytown, USA"},
+    {Name: "Michael Johnson",Marks: "75%",Class: "9th Grade",Address: "456 Oak Avenue, Smailvill, U..."},
+];
+
+const studentsRecordDiv = document.querySelector('.students_record');
+
+students.forEach((curValue)=>{
+
+const studentDiv = document.createElement('div');
+studentDiv.innerHTML = `
+<ul>
+    <li>Student Name: ${curValue.Name}</li>
+    <li>Marks: ${curValue.Marks}</li>
+    <li>Class: ${curValue.Class}</li>
+    <li>Address: ${curValue.Address}</li>
+
+ </ul>   
+`
+studentsRecordDiv.append(studentDiv);
+});
+
+// filtering the students by their name
+const search = document.querySelector('.hello');
+
+search.addEventListener('click', () => {
+const searchValue = document.getElementById('search-query').value;
+const give_student = students.filter((curValue2)=>{
+
+    // return curValue2.Name.toLowerCase().includes(searchValue.toLowerCase());
+    // return curValue2.Name.toLowerCase().startsWith(searchValue.toLowerCase().charAt(0));
+ 
+    for(let i = 0; i < students.length; i++){
+
+        if(curValue2.Name.toLowerCase().startsWith(searchValue.toLowerCase(i))){
+            return true;
+        }
+    }
+  
+});
+
+// displaying the details of the searched student from search bar 
+
+studentsRecordDiv.innerHTML = "";
+
+const search_student = give_student.filter((fetch_student)=>{
+
+    const studentDiv2 = document.createElement('div');
+    studentDiv2.innerHTML = `
+    <ul>
+        <li>Student Name: ${fetch_student['Name']}</li>
+        <li>Marks: ${fetch_student['Marks']}</li>
+        <li>Class: ${fetch_student['Class']}</li>
+        <li>Address: ${fetch_student['Address']}</li>
+        
+        </ul>   
+     `
+        studentsRecordDiv.append(studentDiv2);
+        
+    });
+
+});
+    </script>
+</body>
+</html>
